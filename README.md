@@ -4,7 +4,10 @@ An [Archipelago](https://archipelago.gg) world + client for **ARC Raiders**. Che
 [arctracker.io](https://arctracker.io) API. Items change what you may bring topside (honor system with a
 referee), and a desktop HUD shows everything in game.
 
-- **Players:** see [docs/HOW_TO_PLAY.md](docs/HOW_TO_PLAY.md) (also included in each release zip).
+- **Players:** guide + YAML generator at **https://gunnysensei.github.io/arctracker-io-archipelago-connector/**
+  ([yaml generator](https://gunnysensei.github.io/arctracker-io-archipelago-connector/yaml.html)) ·
+  download from [Releases](https://github.com/GunnySensei/arctracker-io-archipelago-connector/releases/latest)
+  · offline copy: [docs/HOW_TO_PLAY.md](docs/HOW_TO_PLAY.md)
 - **Design notes:** [DESIGN.md](DESIGN.md) · **Changes:** [CHANGELOG.md](CHANGELOG.md)
 
 ## Layout
@@ -15,6 +18,7 @@ referee), and a desktop HUD shows everything in game.
 | `tests/` | offline client tests + arctracker fixtures |
 | `data_raw/` | public arctracker.io game data (`/api/items`, quests, hideout, projects) |
 | `overlay/` | browser-overlay preview page |
+| `docs/` | GitHub Pages site: `index.html` (guide), `yaml.html` (YAML generator) |
 
 ## Dev quickstart
 Uses the Archipelago 0.6.7 source + venv in `C:\Games\APLocalTracker` (see `tools/*.py` for paths).
