@@ -1,0 +1,8 @@
+name: ArcMin
+game: ARC Raiders
+ARC Raiders:
+  extraction_checks: 5
+  map_extraction_checks: 1
+  value_goal: 200000
+  trap_percentage: 50
+  logic_difficulty: casual

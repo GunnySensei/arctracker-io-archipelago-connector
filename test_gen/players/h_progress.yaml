@@ -1,0 +1,8 @@
+name: ArcProgress
+game: ARC Raiders
+ARC Raiders:
+  goal: both
+  new_quest_checks: 30
+  new_blueprint_checks: 20
+  hideout_upgrade_checks: 15
+  project_phase_checks: 15

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ARC·AP Overlay</title>
+<style>
+  :root {
+    --panel: rgba(12, 14, 16, 0.78);
+    --edge: rgba(255, 255, 255, 0.10);
+    --text: #ece6da; --dim: #8f8a80;
+    --teal: #4fb3c8; --amber: #f0b44c; --red: #ff6a4d; --green: #8fd694; --gold: #ffc24a;
+    --scale: 1; --inset: 0px;
+  }
+  html, body { margin: 0; height: 100%; background: transparent; overflow: hidden; }
+  body.preview { background: #222 center/cover no-repeat; }
+  .stack { position: fixed; top: calc(40px * var(--scale)); right: calc(24px * var(--scale) + var(--inset));
+           width: calc(360px * var(--scale)); display: flex; flex-direction: column; gap: calc(8px * var(--scale));
+           font-family: "Bahnschrift", "Barlow Condensed", "Roboto Condensed", sans-serif;
+           font-variation-settings: "wdth" 80; font-size: calc(15px * var(--scale)); line-height: 1.35;
+           color: var(--text); letter-spacing: 0.02em; }
+  .hud { background: var(--panel); border: 1px solid var(--edge); border-left: 3px solid var(--teal);
+         backdrop-filter: blur(6px); padding: calc(10px * var(--scale)) calc(12px * var(--scale)); }
+  .title { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.8em; color: var(--dim);
+           text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 6px; }
+  .title b { color: var(--teal); font-weight: 600; }
+  .title .warn { color: var(--red); }
+  .grid { display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 2px 10px; align-items: baseline; }
+  .k { color: var(--dim); text-transform: uppercase; font-size: 0.78em; letter-spacing: 0.12em; }
+  .v { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pips { letter-spacing: 1px; color: var(--teal); font-size: 0.85em; margin-right: 4px; }
+  .pips i { font-style: normal; color: #3a3f44; }
+  .rar-0 { color: #c9c9c9; } .rar-1 { color: #7fd36b; } .rar-2 { color: #5aa8ff; } .rar-3 { color: #c07cff; } .rar-4 { color: var(--gold); }
+  .row { display: flex; gap: 10px; align-items: baseline; margin-top: 2px; }
+  .sep { height: 1px; background: var(--edge); margin: 8px 0 6px; }
+  .trap { display: flex; justify-content: space-between; align-items: center; color: var(--red); font-weight: 600; margin: 2px 0; }
+  .trap::before { content: "▲"; font-size: 0.7em; margin-right: 6px; }
+  .trap span { flex: 1; }
+  .more { color: var(--dim); font-size: 0.85em; }
+  button { font: inherit; font-size: 0.78em; color: var(--text); background: transparent; border: 1px solid var(--edge);
+           padding: 1px 10px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.1em; }
+  button:hover { border-color: var(--teal); color: var(--teal); }
+  .bar { flex: 1; height: 5px; background: #2a2e33; position: relative; }
+  .bar > div { position: absolute; inset: 0 auto 0 0; background: var(--teal); }
+  .new { color: var(--amber); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .done { color: var(--green); font-weight: 600; }
+  .flash { animation: flash 2.5s ease-out; }
+  @keyframes flash { 0% { background: rgba(240, 180, 76, 0.45); } 100% { background: transparent; } }
+  .compact .full { display: none; }
+  .popups-only .hud { display: none; }
+  .offline { color: var(--dim); }
+
+  /* pop-up cards for checks / received items */
+  .pops { display: flex; flex-direction: column; gap: calc(6px * var(--scale)); }
+  .pop { background: var(--panel); border: 1px solid var(--edge); border-left: 3px solid var(--teal);
+         backdrop-filter: blur(6px); padding: calc(7px * var(--scale)) calc(12px * var(--scale));
+         animation: slidein 0.35s ease-out; transition: opacity 0.6s, transform 0.6s; }
+  .pop.out { opacity: 0; transform: translateX(30px); }
+  @keyframes slidein { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: none; } }
+  .pop .tag { font-size: 0.72em; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; margin-right: 8px; }
+  .pop .head { color: var(--dim); font-size: 0.85em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pop .body { font-weight: 600; font-size: 1.05em; }
+  .pop.found { border-left-color: var(--teal); } .pop.found .tag { color: var(--teal); }
+  .pop.received { border-left-color: var(--amber); } .pop.received .tag { color: var(--amber); }
+  .pop.trap { border-left-color: var(--red); } .pop.trap .tag, .pop.trap .body { color: var(--red); }
+  .pop.core { border-left-color: var(--green); } .pop.core .tag { color: var(--green); }
+  .pop.goal { border-left-color: var(--gold); } .pop.goal .tag, .pop.goal .body { color: var(--gold); }
+  .pop .prog { color: var(--gold); }
+
+  .controls { position: fixed; left: 16px; bottom: 16px; display: flex; gap: 16px; align-items: center;
+              font: 14px "Bahnschrift", sans-serif; color: #ddd; background: rgba(0,0,0,0.7);
+              padding: 8px 14px; border: 1px solid #444; border-radius: 6px; }
+  .controls input[type=range] { width: 140px; vertical-align: middle; }
+  .controls.hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="stack" id="stack">
+  <div class="hud" id="hud"><div class="offline">Connecting to the ARC Raiders client…</div></div>
+  <div class="pops" id="pops"></div>
+</div>
+
+<div class="controls hidden" id="controls">
+  <label>Scale <input type="range" id="scale" min="0.75" max="2" step="0.05"> <span id="scaleVal"></span></label>
+  <label>Inset <input type="range" id="inset" min="0" max="900" step="10"> <span id="insetVal"></span></label>
+  <label>View <select id="mode"><option value="full">Full</option><option value="compact">Compact</option>
+    <option value="popups">Pop-ups only</option></select></label>
+  <label><input type="checkbox" id="bg"> Game background</label>
+  <button id="hide" title="H toggles this bar">Hide</button>
+</div>
+
+<script>
+const POP_SECONDS = 8;
+const RARITY = ["Common", "Uncommon", "Rare", "Epic", "Legendary"];
+const RAR_SHORT = ["Grey", "Green", "Blue", "Purple", "Gold"];
+const TIER = ["I", "II", "III", "IV"];
+const SHIELD = ["None", "Light", "Medium", "Heavy"];
+const HEALS = ["2", "4", "6", "10", "∞"], HEAL_RAR = [0, 1, 2, 4, 4];
+const NADES = ["None", "2", "5", "∞"];
+const AUG = ["Basic", "≤ green", "≤ blue", "Any"];
+const TAGS = {found: "Check", received: "Received", trap: "Trap", core: "Cores", goal: "Goal"};
+
+// ---------- settings (URL params override saved ones)
+const q = new URLSearchParams(location.search);
+const served = location.protocol.startsWith("http");
+const saved = JSON.parse(localStorage.getItem("arcap_overlay") || "{}");
+const cfg = {
+  scale: parseFloat(q.get("scale") || saved.scale || 1),
+  inset: parseInt(q.get("inset") || saved.inset || 0),
+  mode: q.get("mode") || saved.mode || "full",
+  bg: q.has("bg") ? q.get("bg") : (served ? "" : (saved.bg ?? "")),
+};
+const el = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+
+function applyCfg() {
+  const root = document.documentElement.style;
+  root.setProperty("--scale", cfg.scale); root.setProperty("--inset", cfg.inset + "px");
+  el("scale").value = cfg.scale; el("scaleVal").textContent = cfg.scale.toFixed(2) + "x";
+  el("inset").value = cfg.inset; el("insetVal").textContent = cfg.inset + "px";
+  el("mode").value = cfg.mode;
+  el("stack").classList.toggle("compact", cfg.mode === "compact");
+  el("stack").classList.toggle("popups-only", cfg.mode === "popups");
+  document.body.classList.toggle("preview", !!cfg.bg);
+  document.body.style.backgroundImage = cfg.bg ? `url("${cfg.bg}")` : "";
+  el("bg").checked = !!cfg.bg;
+  localStorage.setItem("arcap_overlay", JSON.stringify(cfg));
+}
+el("scale").oninput = e => { cfg.scale = parseFloat(e.target.value); applyCfg(); };
+el("inset").oninput = e => { cfg.inset = parseInt(e.target.value); applyCfg(); };
+el("mode").onchange = e => { cfg.mode = e.target.value; applyCfg(); };
+el("bg").onchange = e => { cfg.bg = e.target.checked ? "preview_bg.png" : ""; applyCfg(); };
+el("hide").onclick = () => el("controls").classList.add("hidden");
+document.addEventListener("keydown", e => { if (e.key === "h" || e.key === "H") el("controls").classList.toggle("hidden"); });
+if (q.get("controls") === "1" || !served) el("controls").classList.remove("hidden");
+applyCfg();
+
+// ---------- actions
+async function act(kind, name) {
+  if (!served) return;
+  await fetch("/action", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({kind, name})});
+  refresh();
+}
+window.act = act;
+
+// ---------- rendering
+function ago(iso) {
+  if (!iso) return "not synced";
+  const m = Math.round((Date.now() - Date.parse(iso)) / 60000);
+  return m < 1 ? "synced now" : m < 60 ? `synced ${m}m ago` : `synced ${Math.round(m / 60)}h ago`;
+}
+function short(n) { return n >= 1e6 ? (n / 1e6).toFixed(2) + "M" : n >= 1000 ? Math.round(n / 1000) + "k" : String(n); }
+
+let lastTraps = "";
+function renderHud(s) {
+  if (!s.connected) { el("hud").innerHTML = `<div class="offline">Waiting for the client to connect…</div>`; return; }
+  const k = s.kit;
+  const pips = "■".repeat(k.rarity + 1) + `<i>${"■".repeat(4 - k.rarity)}</i>`;
+  const trapsKey = JSON.stringify(s.traps);
+  const traps = s.traps.slice(0, 2).map(([n, c], i) =>
+    `<div class="trap ${trapsKey !== lastTraps && i === 0 && lastTraps ? "flash" : ""}"><span>${esc(n.replace(" Trap", ""))}${c > 1 ? " ×" + c : ""}</span>` +
+    `<button onclick='act("done", ${JSON.stringify(n)})'>Done</button></div>`).join("");
+  const moreTraps = s.traps.length > 2 ? `<div class="more">+${s.traps.length - 2} more traps</div>` : "";
+  lastTraps = trapsKey;
+  const cores = s.cores ? `<div class="row"><span class="k">Cores</span><span class="v">${s.cores.distinct} / ${s.cores.target}</span>` +
+      (s.cores.boss_required ? `<span class="k">Boss</span><span class="v">${s.cores.boss ? "✓" : "✗"}</span>` : "") +
+      (s.cores.recent ? `<span class="new">+ ${esc(s.cores.recent)}</span>` : "") + `</div>` : "";
+  const valuePct = s.value.goal ? Math.min(100, 100 * s.value.total / s.value.goal) : 0;
+  const value = s.goal !== "core_hunt" ? `<div class="row"><span class="k">Value</span><div class="bar"><div style="width:${valuePct}%"></div></div>` +
+      `<span class="v">${short(s.value.total)} / ${short(s.value.goal)}</span></div>` : "";
+  el("hud").innerHTML = `
+    <div class="title"><span><b>ARC·AP</b> &nbsp;what you may bring</span>
+      <span><span class="${s.stale ? "warn" : ""}">${s.stale ? "sync needed" : ago(s.synced)}</span>
+        <button onclick='act("check")'>Check</button> <button onclick='act("sync")'>Sync</button></span></div>
+    <div class="grid full">
+      <span class="k">Guns</span><span class="v"><span class="pips">${pips}</span><span class="rar-${k.rarity}">≤ ${RAR_SHORT[k.rarity]}</span></span>
+      <span class="k">Tier</span><span class="v">≤ ${TIER[k.tier]}</span>
+      <span class="k">Shield</span><span class="v">${SHIELD[k.shields]}</span>
+      <span class="k">Heals</span><span class="v">${HEALS[k.healing]} <span class="rar-${HEAL_RAR[k.healing]}">≤ ${RAR_SHORT[HEAL_RAR[k.healing]].toLowerCase()}</span></span>
+      <span class="k">Nades</span><span class="v">${NADES[k.throwables]}</span>
+      <span class="k">Aug</span><span class="v">${AUG[k.augment]}</span>
+      <span class="k">Slots</span><span class="v">${k.slots ? "2 guns" : "1 gun"}</span>
+      <span class="k">Lic</span><span class="v">${esc(s.licenses.join(" · ")) || "none"}</span>
+    </div>
+    <div class="row full"><span class="k">Maps</span><span class="v">${esc(s.maps.join(" · ")) || "none"}</span></div>
+    ${s.traps.length ? `<div class="sep"></div>${traps}${moreTraps}` : ""}
+    ${(cores || value) ? `<div class="sep"></div>${cores}${value}` : ""}
+    ${s.goal_done ? `<div class="row"><span class="done">GOAL COMPLETE</span></div>` : ""}`;
+}
+
+const shown = new Set();
+function renderPops(events) {
+  for (const e of [...events].reverse()) {           // oldest first so the newest ends up on top
+    if (e.age > POP_SECONDS || shown.has(e.id)) continue;
+    shown.add(e.id);
+    const d = document.createElement("div");
+    d.className = "pop " + e.kind;
+    const prog = (e.flags & 1) && e.kind !== "trap" ? " prog" : "";
+    d.innerHTML = `<div class="head"><span class="tag">${TAGS[e.kind] || e.kind}</span>${esc(e.title)}</div>` +
+                  `<div class="body${prog}">${esc(e.text)}</div>`;
+    el("pops").prepend(d);
+    const left = Math.max(1, POP_SECONDS - e.age) * 1000;
+    setTimeout(() => d.classList.add("out"), left);
+    setTimeout(() => d.remove(), left + 700);
+    while (el("pops").children.length > 4) el("pops").lastChild.remove();
+  }
+}
+
+// ---------- data
+const SAMPLE = {connected: true, synced: new Date(Date.now() - 120000).toISOString(), stale: false,
+  kit: {rarity: 2, tier: 0, shields: 1, healing: 1, throwables: 0, augment: 0, slots: 0},
+  licenses: ["BR", "Special"], maps: ["Dam Battlegrounds"],
+  traps: [["Pistol Only Trap", 1], ["No Heals Trap", 1], ["Loud Raid Trap", 1], ["Drop Your Best Item Trap", 1]],
+  tokens: [], goal: "both", goal_done: false, value: {total: 135828, goal: 500000},
+  cores: {distinct: 4, target: 10, boss: false, boss_required: true, recent: "Rocketeer Driver x1"}, events: []};
+const DEMO = [
+  {kind: "found", title: "Check: Extraction #5", text: "Progressive Shields for Alex", flags: 1},
+  {kind: "received", title: "Sam sent you", text: "Shields: Medium shield", flags: 1},
+  {kind: "trap", title: "Sam sent you", text: "Trap: Pistol Only", flags: 4},
+  {kind: "core", title: "Cores looted", text: "Rocketeer Driver x1, Tick Pod x2", flags: 0},
+  {kind: "found", title: "Check: Loot a Wasp Driver #1", text: "Map unlocked: Stella Montis", flags: 1},
+];
+let demoI = 0, demoT = 0;
+
+async function refresh() {
+  if (!served) {                                      // file:// preview: sample data + a demo pop-up every 3s
+    const now = Date.now() / 1000;
+    if (now - demoT > 3) { demoT = now; const d = DEMO[demoI++ % DEMO.length]; SAMPLE.events = [{...d, age: 0, id: String(now)}]; }
+    renderHud(SAMPLE); renderPops(SAMPLE.events); return;
+  }
+  try {
+    const s = await (await fetch("/state.json", {cache: "no-store"})).json();
+    renderHud(s); renderPops(s.events || []);
+  } catch { el("hud").innerHTML = `<div class="offline">ARC Raiders client not running.</div>`; }
+}
+refresh(); setInterval(refresh, 1000);
+</script>
+</body>
+</html>

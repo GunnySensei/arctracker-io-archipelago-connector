@@ -1,0 +1,1220 @@
+{
+ "data": {
+  "projects": [
+   {
+    "id": "trophy_display_project",
+    "name": "Trophy Display",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Roaming Threats",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "rusted_bolts",
+        "required": 3,
+        "submitted": 2
+       },
+       {
+        "itemId": "pop_trigger",
+        "required": 15,
+        "submitted": 15
+       },
+       {
+        "itemId": "tick_pod",
+        "required": 15,
+        "submitted": 6
+       },
+       {
+        "itemId": "surveyor_vault",
+        "required": 5,
+        "submitted": 5
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Soaring Menaces",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "spotter_relay",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "expired_respirator",
+        "required": 3,
+        "submitted": 0
+       },
+       {
+        "itemId": "wasp_driver",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "hornet_driver",
+        "required": 15,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Ferocious Foes",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "arc_performance_steel",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "shredder_gyro",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "leaper_pulse_unit",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "bastion_cell",
+        "required": 5,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Dominant Dangers",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "arc_synthetic_resin",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "magnetic_accelerator",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "rocketeer_driver",
+        "required": 8,
+        "submitted": 0
+       },
+       {
+        "itemId": "queen_reactor",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 5,
+      "name": "Imposing Behemoths",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "exodus_modules",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "geiger_counter",
+        "required": 3,
+        "submitted": 0
+       },
+       {
+        "itemId": "bombardier_cell",
+        "required": 8,
+        "submitted": 0
+       },
+       {
+        "itemId": "matriarch_reactor",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 5,
+    "fullyCompleted": false
+   },
+   {
+    "id": "sheltered_retreat_project",
+    "name": "Sheltered Retreat",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Research topside living conditions",
+      "completed": true,
+      "categoryRequirements": [
+       {
+        "category": "QuestComplete_Photo",
+        "required": 1,
+        "submitted": 1
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Gather building materials",
+      "completed": true,
+      "requirements": [
+       {
+        "itemId": "planks",
+        "required": 3,
+        "submitted": 3
+       },
+       {
+        "itemId": "sheetmetal",
+        "required": 5,
+        "submitted": 5
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 10,
+        "submitted": 10
+       },
+       {
+        "itemId": "advanced_electrical_components",
+        "required": 3,
+        "submitted": 3
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Safeguard the building site",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "QuestObjectives",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 2,
+    "totalPhases": 3,
+    "fullyCompleted": false
+   },
+   {
+    "id": "souls_offering_project",
+    "name": "Soul's Offering",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Construct Vaulto's Offering",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "dead_flowers",
+        "required": 1,
+        "submitted": 1
+       },
+       {
+        "itemId": "rock_salt",
+        "required": 2,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 15,
+        "submitted": 15
+       },
+       {
+        "itemId": "expired_respirator",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Construct Ferrovia's Offering",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "dead_flowers",
+        "required": 3,
+        "submitted": 0
+       },
+       {
+        "itemId": "railway_lantern",
+        "required": 2,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_arc_powercell",
+        "required": 15,
+        "submitted": 0
+       },
+       {
+        "itemId": "remote_raider_flare",
+        "required": 10,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Construct Murteta's Offering",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "fancy_plate",
+        "required": 2,
+        "submitted": 0
+       },
+       {
+        "itemId": "mask_fragment",
+        "required": 1,
+        "submitted": 0
+       },
+       {
+        "itemId": "insulation_roll",
+        "required": 1,
+        "submitted": 0
+       },
+       {
+        "itemId": "fertilizer",
+        "required": 5,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Honor The Fallen",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "QuestObjectives",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 4,
+    "fullyCompleted": false
+   },
+   {
+    "id": "expedition_project_s1",
+    "name": "Expedition Project (Expedition 1)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Foundation",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "metal_parts",
+        "required": 150,
+        "submitted": 0
+       },
+       {
+        "itemId": "rubber_parts",
+        "required": 200,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 80,
+        "submitted": 80
+       },
+       {
+        "itemId": "steel_spring",
+        "required": 15,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Core Systems",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "durable_cloth",
+        "required": 35,
+        "submitted": 0
+       },
+       {
+        "itemId": "wires",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "electrical_components",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "cooling_fan",
+        "required": 5,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Framework",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "light_bulb",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "battery",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "sensors",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "exodus_modules",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Outfitting",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "humidifier",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_electrical_components",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "magnetic_accelerator",
+        "required": 3,
+        "submitted": 0
+       },
+       {
+        "itemId": "leaper_pulse_unit",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 5,
+      "name": "Load Stage",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "Combat Items",
+        "required": 250000,
+        "submitted": 0
+       },
+       {
+        "category": "Survival Items",
+        "required": 100000,
+        "submitted": 0
+       },
+       {
+        "category": "Provisions",
+        "required": 180000,
+        "submitted": 0
+       },
+       {
+        "category": "Materials",
+        "required": 300000,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 6,
+      "name": "Departure",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 100000,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 6,
+    "fullyCompleted": false
+   },
+   {
+    "id": "expedition_project",
+    "name": "Expedition Project (Expedition 2)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Foundation",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "metal_parts",
+        "required": 150,
+        "submitted": 0
+       },
+       {
+        "itemId": "plastic_parts",
+        "required": 200,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 80,
+        "submitted": 0
+       },
+       {
+        "itemId": "steel_spring",
+        "required": 15,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Core Systems",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "durable_cloth",
+        "required": 35,
+        "submitted": 0
+       },
+       {
+        "itemId": "wires",
+        "required": 25,
+        "submitted": 0
+       },
+       {
+        "itemId": "electrical_components",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "cooling_coil",
+        "required": 4,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Framework",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "light_bulb",
+        "required": 4,
+        "submitted": 0
+       },
+       {
+        "itemId": "battery",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "shredder_gyro",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "exodus_modules",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Outfitting",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "frequency_modulation_box",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_electrical_components",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "ion_sputter",
+        "required": 3,
+        "submitted": 0
+       },
+       {
+        "itemId": "leaper_pulse_unit",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 5,
+      "name": "Load Stage",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "Combat Items",
+        "required": 200000,
+        "submitted": 0
+       },
+       {
+        "category": "Survival Items",
+        "required": 100000,
+        "submitted": 0
+       },
+       {
+        "category": "Provisions",
+        "required": 150000,
+        "submitted": 0
+       },
+       {
+        "category": "Materials",
+        "required": 300000,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 6,
+      "name": "Departure",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 100000,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 6,
+    "fullyCompleted": false
+   },
+   {
+    "id": "expedition_project_s3",
+    "name": "Expedition (Expedition 3)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Foundation",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "metal_parts",
+        "required": 150,
+        "submitted": 0
+       },
+       {
+        "itemId": "chemicals",
+        "required": 100,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 80,
+        "submitted": 0
+       },
+       {
+        "itemId": "steel_spring",
+        "required": 15,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Core Systems",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "durable_cloth",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "wires",
+        "required": 25,
+        "submitted": 0
+       },
+       {
+        "itemId": "electrical_components",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "industrial_charger",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Framework",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "coffee_pot",
+        "required": 1,
+        "submitted": 0
+       },
+       {
+        "itemId": "battery",
+        "required": 25,
+        "submitted": 0
+       },
+       {
+        "itemId": "firefly_burner",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "exodus_modules",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Outfitting",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "broken_guidance_system",
+        "required": 1,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_electrical_components",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "breathtaking_snow_globe",
+        "required": 3,
+        "submitted": 0
+       },
+       {
+        "itemId": "bombardier_cell",
+        "required": 2,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 5,
+      "name": "Load Stage",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "Combat Items",
+        "required": 200000,
+        "submitted": 0
+       },
+       {
+        "category": "Survival Items",
+        "required": 100000,
+        "submitted": 0
+       },
+       {
+        "category": "Provisions",
+        "required": 150000,
+        "submitted": 0
+       },
+       {
+        "category": "Materials",
+        "required": 300000,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 6,
+      "name": "Departure",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 100000,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 6,
+    "fullyCompleted": false
+   },
+   {
+    "id": "expedition_project_s4",
+    "name": "Expedition (Expedition 4)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Foundation",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "metal_parts",
+        "required": 150,
+        "submitted": 0
+       },
+       {
+        "itemId": "chemicals",
+        "required": 100,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 80,
+        "submitted": 0
+       },
+       {
+        "itemId": "canister",
+        "required": 15,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Core Systems",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "durable_cloth",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "oil",
+        "required": 25,
+        "submitted": 0
+       },
+       {
+        "itemId": "electrical_components",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "industrial_charger",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Framework",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "arc_motion_core",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "speaker_component",
+        "required": 15,
+        "submitted": 0
+       },
+       {
+        "itemId": "turbine_compressor",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "exodus_modules",
+        "required": 2,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Outfitting",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "portable_tv",
+        "required": 1,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_electrical_components",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "sirena_dorata_ship_model",
+        "required": 2,
+        "submitted": 0
+       },
+       {
+        "itemId": "vaporizer_regulator",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 5,
+      "name": "Load Stage",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "Combat Items",
+        "required": 200000,
+        "submitted": 0
+       },
+       {
+        "category": "Survival Items",
+        "required": 100000,
+        "submitted": 0
+       },
+       {
+        "category": "Provisions",
+        "required": 150000,
+        "submitted": 0
+       },
+       {
+        "category": "Materials",
+        "required": 300000,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 6,
+      "name": "Departure",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 100000,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 6,
+    "fullyCompleted": false
+   },
+   {
+    "id": "expedition_project_s5",
+    "name": "Expedition (Expedition 5)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Foundation",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "metal_parts",
+        "required": 150,
+        "submitted": 0
+       },
+       {
+        "itemId": "plastic_parts",
+        "required": 100,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_alloy",
+        "required": 80,
+        "submitted": 0
+       },
+       {
+        "itemId": "magnet",
+        "required": 15,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Core Systems",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "durable_cloth",
+        "required": 30,
+        "submitted": 0
+       },
+       {
+        "itemId": "duct_tape",
+        "required": 25,
+        "submitted": 0
+       },
+       {
+        "itemId": "mechanical_components",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "voltage_converter",
+        "required": 10,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Framework",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "arc_circuitry",
+        "required": 20,
+        "submitted": 0
+       },
+       {
+        "itemId": "speaker_component",
+        "required": 15,
+        "submitted": 0
+       },
+       {
+        "itemId": "bastion_cell",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "magnetic_accelerator",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 4,
+      "name": "Outfitting",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "radio",
+        "required": 2,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_mechanical_components",
+        "required": 5,
+        "submitted": 0
+       },
+       {
+        "itemId": "lances_mixtape_5th_edition",
+        "required": 2,
+        "submitted": 0
+       },
+       {
+        "itemId": "rocketeer_driver",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 5,
+      "name": "Load Stage",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "Combat Items",
+        "required": 200000,
+        "submitted": 0
+       },
+       {
+        "category": "Survival Items",
+        "required": 100000,
+        "submitted": 0
+       },
+       {
+        "category": "Provisions",
+        "required": 150000,
+        "submitted": 0
+       },
+       {
+        "category": "Materials",
+        "required": 300000,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 6,
+      "name": "Departure",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 100000,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 6,
+    "fullyCompleted": false
+   },
+   {
+    "id": "phantom_targets_project",
+    "name": "Phantom Targets (Part 1)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Upgrade Cargo Elevator Antennas",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "InteractTask",
+        "required": 3,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Test ARC Parts for Irregular Behavior",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 1000,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Test Multiple ARC Destruction Methods",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "QuestObjectives",
+        "required": 1,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 3,
+    "fullyCompleted": false
+   },
+   {
+    "id": "phantom_targets_part_2_project",
+    "name": "Phantom Targets (Part 2)",
+    "phases": [
+     {
+      "phase": 1,
+      "name": "Bring In Glitched Wasp Parts for Testing",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "glitched_arc_power_converter",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "glitched_arc_transmitter",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "glitched_arc_phased_array",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "advanced_arc_powercell",
+        "required": 10,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 2,
+      "name": "Perform Final Tests on Glitched Wasp Parts",
+      "completed": false,
+      "requirements": [
+       {
+        "itemId": "glitched_arc_light_ring",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "glitched_arc_circuitry",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_thermo_lining",
+        "required": 10,
+        "submitted": 0
+       },
+       {
+        "itemId": "arc_circuitry",
+        "required": 10,
+        "submitted": 0
+       }
+      ]
+     },
+     {
+      "phase": 3,
+      "name": "Conduct One Final Explosive Test",
+      "completed": false,
+      "categoryRequirements": [
+       {
+        "category": "ArcDamage",
+        "required": 100,
+        "submitted": 0
+       }
+      ]
+     }
+    ],
+    "completedPhases": 0,
+    "totalPhases": 3,
+    "fullyCompleted": false
+   }
+  ],
+  "summary": {
+   "totalProjects": 10,
+   "fullyCompletedProjects": 0,
+   "incompleteProjects": 10
+  }
+ },
+ "meta": {
+  "requestId": "00000000-0000-4000-8000-000000000000"
+ }
+}

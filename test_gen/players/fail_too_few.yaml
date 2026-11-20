@@ -1,0 +1,9 @@
+name: ArcTiny
+game: ARC Raiders
+ARC Raiders:
+  extraction_checks: 0
+  map_extraction_checks: 0
+  raid_value_checks: false
+  arc_kill_checks: false
+  core_checks_per_type: 0
+  goal: extracted_value

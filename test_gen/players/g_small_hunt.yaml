@@ -1,0 +1,8 @@
+name: ArcSmall
+game: ARC Raiders
+ARC Raiders:
+  goal: core_hunt
+  core_hunt_count: 5
+  require_boss_core: false
+  core_checks_per_type: 0
+  logic_difficulty: sweaty

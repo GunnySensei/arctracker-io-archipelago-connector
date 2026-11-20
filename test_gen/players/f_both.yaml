@@ -1,0 +1,7 @@
+name: ArcBoth
+game: ARC Raiders
+ARC Raiders:
+  goal: both
+  core_hunt_count: 19
+  core_checks_per_type: 3
+  logic_difficulty: casual

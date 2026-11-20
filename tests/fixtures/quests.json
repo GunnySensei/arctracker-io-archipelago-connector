@@ -1,0 +1,842 @@
+{
+ "data": {
+  "quests": [
+   {
+    "id": "12_cold_storage",
+    "name": "Cold Storage",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "12_in_my_image",
+    "name": "In My Image",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "12_snap_and_salvage",
+    "name": "Snap and Salvage",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "a_dead_end",
+    "name": "A Dead End",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "a_path_not_yours",
+    "name": "A Path Not Yours",
+    "trader": "Ermal",
+    "completed": false
+   },
+   {
+    "id": "a_prime_specimen",
+    "name": "A Prime Specimen",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "a_rising_tide",
+    "name": "A Rising Tide",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "a_toxic_trail",
+    "name": "A Toxic Trail",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "a_wrench_in_the_works",
+    "name": "A Wrench in the Works",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "action_economy",
+    "name": "Action Economy",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "bait_fetch_blast",
+    "name": "Bait, Fetch, Blast",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "battening_down",
+    "name": "Battening Down",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "beam_resonance_tech",
+    "name": "Beam Resonance Tech",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "belly_of_the_beast",
+    "name": "Belly of the Beast",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "boarding_the_frigate",
+    "name": "Boarding the Frigate",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "bombing_run",
+    "name": "Bombing Run",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "burst_assembly_recovery",
+    "name": "Burst Assembly Recovery",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "celestes_childhood_drawings",
+    "name": "Celeste’s Childhood Drawings",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "celestes_teenage_rebellion",
+    "name": "Celeste's Teenage Rebellion",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "clamoring_for_attention",
+    "name": "Clamoring for Attention",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "clean_hands",
+    "name": "Clean Hands",
+    "trader": "Ermal",
+    "completed": false
+   },
+   {
+    "id": "collision_course",
+    "name": "Collision Course",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "combat_recon",
+    "name": "Combat Recon",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "compact_combustion_charges",
+    "name": "Compact Combustion Charges",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "deciphering_the_data",
+    "name": "Deciphering The Data",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "disrupting_the_frigate",
+    "name": "Disrupting the Frigate",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "divided",
+    "name": "Divided",
+    "trader": "Ermal",
+    "completed": false
+   },
+   {
+    "id": "dust_on_the_wires",
+    "name": "Dust on the Wires",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "embedded_blast_engineering",
+    "name": "Embedded Blast Engineering",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "empathetic_prototypes",
+    "name": "Empathetic Prototypes",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "exploring_pendola_pass",
+    "name": "Exploring Pendola Pass",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "extended_burst_cycles",
+    "name": "Extended Burst Cycles",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "fragmented_logs",
+    "name": "Fragmented Logs",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "furtive_meetings",
+    "name": "Furtive Meetings",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "groundbreaking",
+    "name": "Groundbreaking",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "high_voltage_exposure",
+    "name": "High-Voltage Exposure",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "home_to_roost",
+    "name": "Home to Roost",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "keeping_an_eye_out",
+    "name": "Keeping an Eye Out",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "last_entry",
+    "name": "Last Entry",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "line_in_the_sand",
+    "name": "Line in the Sand",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "magazine_geometry_101",
+    "name": "Magazine Geometry 101",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "movie_night",
+    "name": "Movie Night",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "nothing_gained",
+    "name": "Nothing Gained",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "nothing_ventured",
+    "name": "Nothing Ventured",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "on_deaf_ears",
+    "name": "On Deaf Ears",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "on_the_map",
+    "name": "On The Map",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "outstanding_balance",
+    "name": "Outstanding Balance",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "paving_the_way",
+    "name": "Paving the Way",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "ruins_and_reverberations",
+    "name": "Ruins and Reverberations",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "safe_harbor",
+    "name": "Safe Harbor",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "settled_in_full",
+    "name": "Settled in Full",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "shield_stress_testing",
+    "name": "Shield Stress Testing",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "shoring_up_defenses",
+    "name": "Shoring Up Defenses",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "sizing_things_up",
+    "name": "Sizing Things Up",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "solid_core_casting_tech",
+    "name": "Solid-Core Casting Tech",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "someone_elses_shoes",
+    "name": "Someone Else's Shoes",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "sprint_shooting",
+    "name": "Sprint Shooting",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "ss1",
+    "name": "Picking Up The Pieces",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss10",
+    "name": "A Better Use",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "ss10a",
+    "name": "Greasing Her Palms",
+    "trader": "Celeste",
+    "completed": true
+   },
+   {
+    "id": "ss10b",
+    "name": "Dormant Barons",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss10c",
+    "name": "Doctor's Orders",
+    "trader": "Lance",
+    "completed": true
+   },
+   {
+    "id": "ss10d",
+    "name": "Mixed Signals",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss10e",
+    "name": "What We Left Behind",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "ss10f",
+    "name": "Medical Merchandise",
+    "trader": "Lance",
+    "completed": true
+   },
+   {
+    "id": "ss10g",
+    "name": "A Reveal in Ruins",
+    "trader": "Lance",
+    "completed": true
+   },
+   {
+    "id": "ss10h",
+    "name": "Broken Monument",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "ss10i",
+    "name": "Marked for Death",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "ss10j",
+    "name": "Straight Record",
+    "trader": "Celeste",
+    "completed": true
+   },
+   {
+    "id": "ss10k",
+    "name": "A Lay of the Land",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss10l",
+    "name": "Market Correction",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "ss10m",
+    "name": "Eyes on the Prize",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "ss10n",
+    "name": "Industrial Espionage",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "ss10o",
+    "name": "Keeping the Memory",
+    "trader": "Celeste",
+    "completed": true
+   },
+   {
+    "id": "ss10p",
+    "name": "Echoes of Victory Ridge",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10q",
+    "name": "Unexpected Initiative",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "ss10r",
+    "name": "A Symbol of Unification",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10s",
+    "name": "Eyes in the Sky",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss10t",
+    "name": "Celeste’s Journals",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10u",
+    "name": "The Major’s Footlocker",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "ss10v",
+    "name": "Out of the Shadows",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss10w",
+    "name": "Back on Top",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "ss10x",
+    "name": "A Balanced Harvest",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x10",
+    "name": "Power Out",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x11",
+    "name": "Flickering Threat",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x12",
+    "name": "Bees!",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x13",
+    "name": "Espresso",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "ss10x14",
+    "name": "Life of a Pharmacist",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "ss10x15",
+    "name": "Tribute to Toledo",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x16",
+    "name": "Digging Up Dirt",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x17",
+    "name": "Turnabout",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x18",
+    "name": "Building a Library",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "ss10x19",
+    "name": "A New Type of Plant",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "ss10x2",
+    "name": "Untended Garden",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x20",
+    "name": "Armored Transports",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "ss10x3",
+    "name": "The Root of the Matter",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x4",
+    "name": "Water Troubles",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x5",
+    "name": "Into the Fray",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss10x6",
+    "name": "Source of the Contamination",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x7",
+    "name": "Switching the Supply",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10x8",
+    "name": "A Warm Place To Rest",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "ss10x9",
+    "name": "Prescriptions of the Past",
+    "trader": "Lance",
+    "completed": false
+   },
+   {
+    "id": "ss10y",
+    "name": "After Rain Comes",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "ss10z",
+    "name": "Our Presence up There",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss11",
+    "name": "A First Foothold",
+    "trader": "Apollo",
+    "completed": true
+   },
+   {
+    "id": "ss11a",
+    "name": "Reduced to Rubble",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss11b",
+    "name": "Lost in Transmission",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss11b2",
+    "name": "Communication Hideout",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss11bx",
+    "name": "With A Trace",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "ss2",
+    "name": "Clearer Skies",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss3",
+    "name": "Trash Into Treasure",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss4",
+    "name": "Off The Radar",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss5",
+    "name": "A Bad Feeling",
+    "trader": "Celeste",
+    "completed": true
+   },
+   {
+    "id": "ss5a",
+    "name": "Hatch Repairs",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss6",
+    "name": "Down to Earth",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "ss7",
+    "name": "The Right Tool",
+    "trader": "Tian Wen",
+    "completed": true
+   },
+   {
+    "id": "ss8",
+    "name": "Safe Passage",
+    "trader": "Apollo",
+    "completed": true
+   },
+   {
+    "id": "ss8a",
+    "name": "What Goes Around",
+    "trader": "Apollo",
+    "completed": true
+   },
+   {
+    "id": "ss8b",
+    "name": "Sparks Fly",
+    "trader": "Apollo",
+    "completed": true
+   },
+   {
+    "id": "ss9",
+    "name": "The Trifecta",
+    "trader": "Shani",
+    "completed": true
+   },
+   {
+    "id": "stable_housing",
+    "name": "Stable Housing",
+    "trader": "Tian Wen",
+    "completed": false
+   },
+   {
+    "id": "taking_stock",
+    "name": "Taking Stock",
+    "trader": "Ermal",
+    "completed": false
+   },
+   {
+    "id": "targeted_component_trial",
+    "name": "Targeted Component Trial",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "test_case",
+    "name": "Test Case",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "the_clean_dream",
+    "name": "The Clean Dream",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "the_first_nomads",
+    "name": "The First Nomads",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "the_league",
+    "name": "The League",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "the_stench_of_corruption",
+    "name": "The Stench of Corruption",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "thermite_tipped_rounds",
+    "name": "Thermite-Tipped Rounds",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "to_the_skies",
+    "name": "To The Skies",
+    "trader": "Apollo",
+    "completed": false
+   },
+   {
+    "id": "top_mounted_optics_retrofittings",
+    "name": "Top Mounted Optics Retrofittings",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "tracks_of_the_beast",
+    "name": "Tracks of the Beast",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "trigger_reset_systems",
+    "name": "Trigger Reset Systems",
+    "trader": "Research Station",
+    "completed": false
+   },
+   {
+    "id": "waking_the_grid",
+    "name": "Waking the Grid",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "when_everything_falls",
+    "name": "When Everything Falls",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "wires_crossed",
+    "name": "Wires Crossed",
+    "trader": "Celeste",
+    "completed": false
+   },
+   {
+    "id": "with_a_view",
+    "name": "With a View",
+    "trader": "Shani",
+    "completed": false
+   },
+   {
+    "id": "worth_your_salt",
+    "name": "Worth Your Salt",
+    "trader": "Celeste",
+    "completed": false
+   }
+  ],
+  "summary": {
+   "total": 138,
+   "completed": 28,
+   "incomplete": 110
+  }
+ },
+ "meta": {
+  "requestId": "00000000-0000-4000-8000-000000000000"
+ }
+}

@@ -1,0 +1,7 @@
+name: ArcCore
+game: ARC Raiders
+ARC Raiders:
+  goal: core_hunt
+  core_hunt_count: 10
+  require_boss_core: true
+  core_checks_per_type: 2

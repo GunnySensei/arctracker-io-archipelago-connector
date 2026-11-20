@@ -1,0 +1,11 @@
+name: GunnyArc
+game: ARC Raiders
+ARC Raiders:
+  goal: extracted_value
+  value_goal: 500000
+  extraction_checks: 20
+  map_extraction_checks: 2
+  starting_maps: 1
+  starting_weapon_classes: 2
+  trap_percentage: 20
+  logic_difficulty: standard

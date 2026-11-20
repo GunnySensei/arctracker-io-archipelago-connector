@@ -1,0 +1,14 @@
+# secrets
+.env
+*.secret
+# build / release output
+build/
+dist/
+# local test servers, generated seeds, logs
+live/
+test_gen/out/
+__pycache__/
+*.pyc
+# personal: game screenshot used for overlay previews, arctracker profile (username/user id)
+overlay/preview_bg.png
+tests/fixtures/profile.json

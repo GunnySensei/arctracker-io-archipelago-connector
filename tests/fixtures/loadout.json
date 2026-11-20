@@ -1,0 +1,89 @@
+{
+ "data": {
+  "loadout": {
+   "augment": {
+    "itemId": "looting_mk1",
+    "name": "Looting Mk. 1",
+    "quantity": 1,
+    "slotIndex": 0
+   },
+   "shield": {
+    "itemId": "light_shield",
+    "name": "Light Shield",
+    "quantity": 1,
+    "slotIndex": 1
+   },
+   "weapon1": {
+    "itemId": "anvil_iv",
+    "name": "Anvil IV",
+    "quantity": 1,
+    "slotIndex": 0,
+    "durabilityPercent": 94,
+    "attachments": [
+     {
+      "itemId": "muzzle_brake_ii",
+      "name": "Muzzle Brake II"
+     }
+    ]
+   },
+   "weapon2": null,
+   "backpack": [
+    {
+     "itemId": "heavy_ammo",
+     "name": "Heavy Ammo",
+     "quantity": 60,
+     "slotIndex": 0
+    }
+   ],
+   "quickItems": [
+    {
+     "itemId": "herbal_bandage",
+     "name": "Herbal Bandage",
+     "quantity": 5,
+     "slotIndex": 0
+    },
+    {
+     "itemId": "surge_shield_recharger",
+     "name": "Surge Shield Recharger",
+     "quantity": 3,
+     "slotIndex": 1
+    },
+    {
+     "itemId": "seeker_grenade",
+     "name": "Seeker Grenade",
+     "quantity": 3,
+     "slotIndex": 2
+    },
+    {
+     "itemId": "zipline",
+     "name": "Zipline",
+     "quantity": 1,
+     "slotIndex": 3
+    }
+   ],
+   "safePocket": [
+    {
+     "itemId": "dam_surveillance_key",
+     "name": "Dam Surveillance Key",
+     "quantity": 1,
+     "slotIndex": 0
+    }
+   ],
+   "augmentedSlots": [],
+   "slotCounts": {
+    "backpack": 1,
+    "quickItems": 4,
+    "safePocket": 1,
+    "augmentedSlots": 0
+   },
+   "other": []
+  },
+  "syncedAt": "2026-11-12T03:49:08.397Z",
+  "changedAt": "2026-11-12T03:49:08.397Z",
+  "value": 27346,
+  "source": "app"
+ },
+ "meta": {
+  "requestId": "00000000-0000-4000-8000-000000000000"
+ }
+}

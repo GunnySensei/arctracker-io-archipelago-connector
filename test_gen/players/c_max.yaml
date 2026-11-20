@@ -1,0 +1,12 @@
+name: ArcMax
+game: ARC Raiders
+ARC Raiders:
+  extraction_checks: 60
+  map_extraction_checks: 5
+  value_goal: 2000000
+  value_milestone_step: 25000
+  value_metric: net
+  starting_maps: 7
+  starting_weapon_classes: 9
+  logic_difficulty: sweaty
+  death_link: true
