@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARC Raiders YAML Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Same world as the guide and the in-game HUD. Layout: form on the left, live YAML + check budget on the right. */
+  :root {
+    color-scheme: dark;
+    --bg: #0d0f11; --panel: #15181b; --panel2: #1b1f23; --edge: #262a2f;
+    --text: #ece6da; --dim: #98928a; --teal: #4fb3c8; --red: #ff6a4d; --amber: #f0b44c; --green: #8fd694;
+    --display: "Barlow Condensed", "Bahnschrift", "Arial Narrow", sans-serif;
+    --body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body { font: 15px/1.5 var(--body); }
+  a { color: var(--teal); }
+  :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .top { display: flex; gap: 22px; align-items: baseline; flex-wrap: wrap; padding: 16px 20px; border-bottom: 1px solid var(--edge);
+         font: 600 15px var(--display); letter-spacing: .1em; text-transform: uppercase; }
+  .top b { color: var(--teal); letter-spacing: .14em; }
+  .top a { color: var(--dim); text-decoration: none; } .top a:hover, .top a[aria-current] { color: var(--text); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 24px 20px 64px; display: grid; gap: 28px;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 440px); align-items: start; }
+  h1 { font: 700 clamp(30px, 4.5vw, 44px)/1.05 var(--display); margin: 0 0 6px; text-wrap: balance; }
+  .sub { color: var(--dim); margin: 0 0 18px; max-width: 64ch; }
+  .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  button { font: 600 14px var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--text);
+           background: var(--panel); border: 1px solid var(--edge); padding: 7px 14px; cursor: pointer; border-radius: 3px; }
+  button:hover { border-color: var(--teal); color: var(--teal); }
+  button.primary { background: var(--teal); color: var(--bg); border-color: var(--teal); }
+  button.primary:hover { filter: brightness(1.1); color: var(--bg); }
+  fieldset { border: 1px solid var(--edge); border-left: 3px solid var(--teal); background: var(--panel); margin: 0 0 16px;
+             padding: 14px 16px 6px; display: grid; gap: 4px 20px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  legend { font: 700 18px var(--display); letter-spacing: .08em; text-transform: uppercase; padding: 0 6px; }
+  .f { display: grid; gap: 3px; padding: 6px 0 10px; }
+  .f label { font: 600 13px var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--dim);
+             display: flex; justify-content: space-between; gap: 8px; }
+  .f label output { color: var(--text); font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+  .f small { color: var(--dim); font-size: 13px; line-height: 1.35; }
+  input[type=text], select { font: 15px var(--body); color: var(--text); background: var(--panel2); border: 1px solid var(--edge);
+                             padding: 7px 9px; border-radius: 3px; width: 100%; }
+  input[type=range] { width: 100%; accent-color: var(--teal); }
+  .check { display: flex; align-items: center; gap: 8px; font: 600 14px var(--display); letter-spacing: .08em;
+           text-transform: uppercase; color: var(--text); padding-top: 4px; }
+  .check input { accent-color: var(--teal); width: 16px; height: 16px; }
+  .side { position: sticky; top: 16px; display: grid; gap: 14px; }
+  .budget { background: var(--panel); border: 1px solid var(--edge); border-left: 3px solid var(--green); padding: 14px 16px; }
+  .budget.bad { border-left-color: var(--red); }
+  .big { font: 700 40px/1 var(--display); font-variant-numeric: tabular-nums; }
+  .budget .row { display: flex; justify-content: space-between; color: var(--dim); font-size: 14px; font-variant-numeric: tabular-nums; }
+  .budget .row b { color: var(--text); font-weight: 600; }
+  .msg { margin-top: 8px; font-size: 14px; }
+  .msg.bad { color: var(--red); } .msg.warn { color: var(--amber); } .msg.ok { color: var(--green); }
+  pre { margin: 0; background: #0a0c0d; border: 1px solid var(--edge); padding: 14px 16px; overflow: auto; max-height: 52vh;
+        font: 13px/1.5 ui-monospace, Consolas, monospace; color: #d9d3c7; border-radius: 3px; }
+  pre .c { color: #6f7a74; } pre .k { color: var(--teal); }
+  .actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .note { color: var(--dim); font-size: 13px; }
+  @media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } .side { position: static; } }
+</style>
+</head>
+<body>
+<div class="top">
+  <b>ARC·AP</b>
+  <a href="index.html">Guide</a>
+  <a href="yaml.html" aria-current="page">YAML generator</a>
+  <a href="https://github.com/GunnySensei/arctracker-io-archipelago-connector/releases/latest">Download</a>
+</div>
+
+<div class="wrap">
+  <form id="form" autocomplete="off">
+    <h1>Make your ARC Raiders YAML</h1>
+    <p class="sub">Pick your settings, check the budget on the right, then download the file and send it to whoever
+      hosts. Everything happens in your browser.</p>
+    <div class="presets" role="group" aria-label="Presets">
+      <button type="button" data-preset="quick">Quick night</button>
+      <button type="button" data-preset="default">Default</button>
+      <button type="button" data-preset="long">Long haul</button>
+    </div>
+
+    <fieldset>
+      <legend>You</legend>
+      <div class="f"><label for="name">Slot name <output id="nameLen"></output></label>
+        <input type="text" id="name" maxlength="16" placeholder="e.g. Speranza">
+        <small>Up to 16 characters. This is the name you'll connect with.</small></div>
+      <div class="f"><label for="logic_difficulty">Logic difficulty</label>
+        <select id="logic_difficulty"><option value="casual">Casual: more kit before hard checks</option>
+          <option value="standard">Standard</option><option value="sweaty">Sweaty: less kit expected</option></select>
+        <small>How geared the logic expects you to be before it puts important items behind harder checks.</small></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Goal</legend>
+      <div class="f"><label for="goal">Goal</label>
+        <select id="goal"><option value="core_hunt">Core Hunt: loot different ARC cores</option>
+          <option value="extracted_value">Extracted Value: extract a total value</option>
+          <option value="both">Both</option></select></div>
+      <div class="f" data-for="core"><label for="core_hunt_count">Different cores needed <output></output></label>
+        <input type="range" id="core_hunt_count" min="3" max="19">
+        <small>19 exist: 8 small (Tick Pod, Wasp Driver…), 9 mid (Rocketeer Driver, Bastion Cell…), 2 boss.</small></div>
+      <div class="f" data-for="core"><span class="check"><input type="checkbox" id="require_boss_core">
+        <label for="require_boss_core">Require a boss core</label></span>
+        <small>One of them must be a Matriarch Reactor or Queen Reactor.</small></div>
+      <div class="f"><label for="value_goal">Value goal <output></output></label>
+        <input type="range" id="value_goal" min="100000" max="2000000" step="50000">
+        <small>Also sets how far the value milestone checks go, whatever your goal.</small></div>
+      <div class="f"><label for="value_metric">Value counts</label>
+        <select id="value_metric"><option value="extracted">Extracted value</option>
+          <option value="net">Net profit (deaths subtract)</option></select></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Start</legend>
+      <div class="f"><label for="starting_maps">Starting maps <output></output></label>
+        <input type="range" id="starting_maps" min="1" max="7"><small>Picked at random. The rest are items.</small></div>
+      <div class="f"><label for="starting_weapon_classes">Starting weapon licenses <output></output></label>
+        <input type="range" id="starting_weapon_classes" min="1" max="9"><small>Random classes out of 9.</small></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Checks</legend>
+      <div class="f"><label for="extraction_checks">Extraction #N <output></output></label>
+        <input type="range" id="extraction_checks" min="0" max="60"></div>
+      <div class="f"><label for="map_extraction_checks">Per-map extractions <output></output></label>
+        <input type="range" id="map_extraction_checks" min="0" max="5"><small>× 7 maps</small></div>
+      <div class="f"><label for="core_checks_per_type">Loot each core #1…#N <output></output></label>
+        <input type="range" id="core_checks_per_type" min="0" max="3"><small>× 19 cores</small></div>
+      <div class="f"><label for="value_milestone_step">Value milestone every <output></output></label>
+        <input type="range" id="value_milestone_step" min="25000" max="250000" step="25000"></div>
+      <div class="f"><label for="new_quest_checks">New quests completed <output></output></label>
+        <input type="range" id="new_quest_checks" min="0" max="30"></div>
+      <div class="f"><label for="new_blueprint_checks">New blueprints learned <output></output></label>
+        <input type="range" id="new_blueprint_checks" min="0" max="20"></div>
+      <div class="f"><label for="hideout_upgrade_checks">Hideout upgrades <output></output></label>
+        <input type="range" id="hideout_upgrade_checks" min="0" max="15"></div>
+      <div class="f"><label for="project_phase_checks">Project phases <output></output></label>
+        <input type="range" id="project_phase_checks" min="0" max="15"></div>
+      <div class="f"><span class="check"><input type="checkbox" id="raid_value_checks">
+        <label for="raid_value_checks">Single-raid value checks</label></span><small>10k / 25k / 50k / 100k / 150k / 200k+ raids (6)</small></div>
+      <div class="f"><span class="check"><input type="checkbox" id="arc_kill_checks">
+        <label for="arc_kill_checks">ARC kill milestones</label></span><small>10 to 500 total ARC kills (7)</small></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Extras</legend>
+      <div class="f"><label for="trap_percentage">Traps among fillers <output></output></label>
+        <input type="range" id="trap_percentage" min="0" max="100" step="5"></div>
+      <div class="f"><label for="referee_mode">Referee</label>
+        <select id="referee_mode"><option value="warn">Warn when my loadout breaks my unlocks</option><option value="off">Off</option></select></div>
+      <div class="f"><span class="check"><input type="checkbox" id="death_link"><label for="death_link">DeathLink</label></span>
+        <small>When you die topside, everyone with DeathLink dies too, and vice versa.</small></div>
+      <div class="f"><label for="progression_balancing">Progression balancing <output></output></label>
+        <input type="range" id="progression_balancing" min="0" max="99"><small>Archipelago default 50.</small></div>
+    </fieldset>
+  </form>
+
+  <aside class="side" aria-live="polite">
+    <div class="budget" id="budget">
+      <div class="row"><span>Checks in your world</span></div>
+      <div class="big" id="total">0</div>
+      <div class="row"><span>Items that must fit (kit + locked maps)</span><b id="required">0</b></div>
+      <div class="row"><span>Filler items (tokens + traps)</span><b id="filler">0</b></div>
+      <div class="row"><span>Traps</span><b id="traps">0</b></div>
+      <div class="msg" id="msg"></div>
+    </div>
+    <pre id="yaml" aria-label="Your YAML"></pre>
+    <div class="actions">
+      <button type="button" class="primary" id="download">Download YAML</button>
+      <button type="button" id="copy">Copy</button>
+    </div>
+    <div class="note">Your last settings are remembered in this browser.</div>
+  </aside>
+</div>
+
+<script>
+const FIELDS = {
+  goal: "core_hunt", core_hunt_count: 10, require_boss_core: true, core_checks_per_type: 2,
+  value_goal: 500000, value_milestone_step: 50000, value_metric: "extracted",
+  extraction_checks: 20, map_extraction_checks: 2, starting_maps: 1, starting_weapon_classes: 2,
+  raid_value_checks: true, arc_kill_checks: true,
+  new_quest_checks: 5, new_blueprint_checks: 3, hideout_upgrade_checks: 2, project_phase_checks: 0,
+  trap_percentage: 20, logic_difficulty: "standard", referee_mode: "warn", death_link: false,
+  progression_balancing: 50,
+};
+const PRESETS = {
+  default: {},
+  quick: {core_hunt_count: 6, require_boss_core: false, core_checks_per_type: 1, value_goal: 300000,
+          extraction_checks: 10, map_extraction_checks: 1, new_quest_checks: 3, new_blueprint_checks: 2,
+          hideout_upgrade_checks: 1, logic_difficulty: "casual"},
+  long: {core_hunt_count: 15, core_checks_per_type: 3, value_goal: 1000000, extraction_checks: 40,
+         map_extraction_checks: 3, new_quest_checks: 15, new_blueprint_checks: 10, hideout_upgrade_checks: 6,
+         project_phase_checks: 5},
+};
+const COMMENTS = {
+  goal: "core_hunt | extracted_value | both", core_hunt_count: "different ARC cores to loot (3-19)",
+  require_boss_core: "one must be a Matriarch or Queen Reactor", core_checks_per_type: "'Loot a <core> #N' checks per core (0-3)",
+  value_goal: "total value to extract after you connect", value_milestone_step: "a check every time your total passes this",
+  value_metric: "extracted | net", extraction_checks: "Extraction #1..N on any map (0-60)",
+  map_extraction_checks: "per map, needs that map's access (0-5)", starting_maps: "random maps unlocked at the start (1-7)",
+  starting_weapon_classes: "random weapon licenses at the start (1-9)", raid_value_checks: "single raid worth 10k..200k+",
+  arc_kill_checks: "total ARC kills 10..500", new_quest_checks: "quests completed after you connect (0-30)",
+  new_blueprint_checks: "blueprints learned after you connect (0-20)", hideout_upgrade_checks: "hideout levels gained after you connect (0-15)",
+  project_phase_checks: "project phases completed after you connect (0-15)", trap_percentage: "% of filler that are traps",
+  logic_difficulty: "casual | standard | sweaty", referee_mode: "off | warn", death_link: "", progression_balancing: "",
+};
+// world constants (mirror worlds/arc_raiders/data.py)
+const KIT_ITEMS = 21, MAPS = 7, CORES = 19, RAID_VALUE = 6, KILLS = 7, MAX_MILESTONES = 40, CLASSES = 9;
+
+const $ = id => document.getElementById(id);
+const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(n % 1e6 ? 2 : 0).replace(/\.?0+$/, "") + "M" : n >= 1000 ? Math.round(n / 1000) + "k" : String(n);
+
+function read() {
+  const v = {name: $("name").value.trim()};
+  for (const [k, d] of Object.entries(FIELDS)) {
+    const e = $(k);
+    v[k] = typeof d === "boolean" ? e.checked : typeof d === "number" ? Number(e.value) : e.value;
+  }
+  return v;
+}
+function write(v) {
+  $("name").value = v.name ?? "";
+  for (const [k, d] of Object.entries(FIELDS)) {
+    const e = $(k), val = v[k] ?? d;
+    if (typeof d === "boolean") e.checked = val; else e.value = val;
+  }
+}
+
+function budget(v) {
+  const step = Math.max(v.value_milestone_step, Math.ceil(v.value_goal / MAX_MILESTONES));
+  const milestones = Math.ceil(v.value_goal / step);
+  const total = v.extraction_checks + v.map_extraction_checks * MAPS + (v.raid_value_checks ? RAID_VALUE : 0) +
+    milestones + (v.arc_kill_checks ? KILLS : 0) + v.core_checks_per_type * CORES +
+    v.new_quest_checks + v.new_blueprint_checks + v.hideout_upgrade_checks + v.project_phase_checks;
+  const required = KIT_ITEMS + (MAPS - v.starting_maps);
+  const licenses = CLASSES - v.starting_weapon_classes;
+  const filler = Math.max(0, total - required - licenses);
+  const traps = Math.round(filler * v.trap_percentage / 100);
+  return {total, required, licenses, filler, traps, milestones, step};
+}
+
+function yaml(v, b) {
+  const lines = [`name: "${(v.name || "YourName").replace(/"/g, "")}"`, `game: ARC Raiders`, `ARC Raiders:`];
+  for (const k of Object.keys(FIELDS)) {
+    let val = v[k];
+    if (typeof val === "boolean") val = val ? "true" : "false";
+    const c = COMMENTS[k] ? `  # ${COMMENTS[k]}` : "";
+    lines.push(`  ${k}: ${val}${c}`);
+  }
+  return lines.join("\n") + "\n";
+}
+
+function render() {
+  const v = read();
+  document.querySelectorAll("input[type=range]").forEach(e => {
+    const o = e.parentElement.querySelector("output");
+    if (!o) return;
+    const n = Number(e.value);
+    o.textContent = e.id === "trap_percentage" ? n + "%" : /value_/.test(e.id) ? fmt(n) : n;
+  });
+  $("nameLen").textContent = `${v.name.length}/16`;
+  const goal = v.goal;
+  document.querySelectorAll("[data-for=core]").forEach(e => e.hidden = goal === "extracted_value");
+
+  const b = budget(v);
+  $("total").textContent = b.total;
+  $("required").textContent = b.required;
+  $("filler").textContent = b.filler;
+  $("traps").textContent = b.traps;
+  const msg = $("msg"), box = $("budget");
+  box.classList.remove("bad");
+  if (b.total < b.required) {
+    box.classList.add("bad");
+    msg.className = "msg bad";
+    msg.textContent = `Not enough checks: ${b.total} can't hold the ${b.required} required items. Add checks or start with more maps. Generation would fail.`;
+  } else if (b.total < b.required + b.licenses) {
+    msg.className = "msg warn";
+    msg.textContent = `Fits, but ${b.required + b.licenses - b.total} weapon license(s) won't fit and will be given to you at the start.`;
+  } else if (!v.name) {
+    msg.className = "msg warn"; msg.textContent = "Add your slot name before downloading.";
+  } else {
+    msg.className = "msg ok";
+    msg.textContent = `Good to go. Value milestones: ${b.milestones} (every ${fmt(b.step)}).`;
+  }
+  const text = yaml(v, b);
+  $("yaml").innerHTML = text.replace(/[&<>]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;"}[c]))
+    .replace(/^(\s*)([\w ]+):/gm, '$1<span class="k">$2</span>:').replace(/(#.*)$/gm, '<span class="c">$1</span>');
+  try { localStorage.setItem("arcap_yaml", JSON.stringify(v)); } catch {}
+  return {v, b, text};
+}
+
+document.querySelectorAll("[data-preset]").forEach(btn => btn.addEventListener("click", () => {
+  const name = $("name").value;
+  write({...FIELDS, ...PRESETS[btn.dataset.preset], name});
+  render();
+}));
+$("form").addEventListener("input", render);
+$("form").addEventListener("submit", e => e.preventDefault());
+$("download").addEventListener("click", () => {
+  const {v, b, text} = render();
+  if (b.total < b.required) return;
+  const blob = new Blob([text], {type: "text/yaml"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `${(v.name || "ARC Raiders").replace(/[^\w\- ]/g, "")}.yaml`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+$("copy").addEventListener("click", async () => {
+  const {text} = render();
+  try { await navigator.clipboard.writeText(text); $("copy").textContent = "Copied"; }
+  catch { $("copy").textContent = "Select and copy"; }
+  setTimeout(() => $("copy").textContent = "Copy", 1500);
+});
+
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem("arcap_yaml") || "{}"); } catch {}
+write({...FIELDS, ...saved});
+render();
+</script>
+</body>
+</html>

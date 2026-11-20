@@ -89,6 +89,10 @@
   .card .h { font-size: 13px; color: var(--dim); } .card .h b { font-size: 11px; letter-spacing: .16em; margin-right: 6px; }
   .card .b { font-weight: 600; font-size: 17px; }
   .card.trapc { border-left-color: var(--red); } .card.found { border-left-color: var(--teal); }
+  .top { display: flex; gap: 22px; align-items: baseline; flex-wrap: wrap; padding: 16px 20px; border-bottom: 1px solid var(--edge);
+         font: 600 15px var(--display); letter-spacing: .1em; text-transform: uppercase; }
+  .top b { color: var(--teal); letter-spacing: .14em; }
+  .top a { color: var(--dim); text-decoration: none; } .top a:hover, .top a[aria-current] { color: var(--text); }
   @media (max-width: 860px) {
     .wrap { grid-template-columns: 1fr; }
     nav { position: static; grid-auto-flow: column; overflow-x: auto; }
@@ -99,6 +103,12 @@
 </style>
 </head>
 <body>
+<div class="top">
+  <b>ARC·AP</b>
+  <a href="index.html" aria-current="page">Guide</a>
+  <a href="yaml.html">YAML generator</a>
+  <a href="https://github.com/GunnySensei/arctracker-io-archipelago-connector/releases/latest">Download</a>
+</div>
 <div class="wrap">
   <nav aria-label="Sections">
     <a href="#install">Install</a>
@@ -130,7 +140,7 @@
         through the <i>ARC Tracker Link</i> app, plus <a href="https://archipelago.gg/tutorial/Archipelago/setup/en">Archipelago
         0.6.4 or newer</a> (tested on 0.6.7) on Windows.</p>
       <ol class="steps">
-        <li>Unzip the release and double-click <code>arc_raiders.apworld</code>. The Archipelago Launcher installs it.
+        <li>Download the latest release from the <a href="https://github.com/GunnySensei/arctracker-io-archipelago-connector/releases/latest">Download</a> page, unzip it, and double-click <code>arc_raiders.apworld</code>. The Archipelago Launcher installs it.
           (Or copy it into <code>Archipelago\custom_worlds\</code>.)</li>
         <li>Restart the Launcher. <b>ARC Raiders Client</b> and <b>ARC Raiders HUD</b> now appear in its list.</li>
       </ol>
@@ -150,9 +160,9 @@
 
     <section id="yaml">
       <h2>3 · Your settings (YAML)</h2>
-      <p>Copy <code>ARC Raiders.yaml</code> from the release, set <code>name:</code> to your slot name, adjust the
-        commented options, and send it to the host. The defaults make a good first run: the <b>Core Hunt</b> goal
-        (loot 10 different ARC cores, one a Matriarch or Queen Reactor), about 105 checks, and 25% of fillers as traps.</p>
+      <p>Use the <a href="yaml.html"><b>YAML generator</b></a>: pick your settings, download the file and send it to the host.
+        (Or copy <code>ARC Raiders.yaml</code> from the release and edit it by hand.) The defaults make a good first run: the <b>Core Hunt</b> goal
+        (loot 10 different ARC cores, one a Matriarch or Queen Reactor), about 105 checks, and 20% of fillers as traps.</p>
     </section>
 
     <section id="host">

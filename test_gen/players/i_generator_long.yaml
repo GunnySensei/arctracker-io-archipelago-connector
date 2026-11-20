@@ -1,0 +1,25 @@
+name: "GenLong"
+game: ARC Raiders
+ARC Raiders:
+  goal: core_hunt  # core_hunt | extracted_value | both
+  core_hunt_count: 15  # different ARC cores to loot (3-19)
+  require_boss_core: true  # one must be a Matriarch or Queen Reactor
+  core_checks_per_type: 3  # 'Loot a <core> #N' checks per core (0-3)
+  value_goal: 1000000  # total value to extract after you connect
+  value_milestone_step: 50000  # a check every time your total passes this
+  value_metric: extracted  # extracted | net
+  extraction_checks: 40  # Extraction #1..N on any map (0-60)
+  map_extraction_checks: 3  # per map, needs that map's access (0-5)
+  starting_maps: 1  # random maps unlocked at the start (1-7)
+  starting_weapon_classes: 2  # random weapon licenses at the start (1-9)
+  raid_value_checks: true  # single raid worth 10k..200k+
+  arc_kill_checks: true  # total ARC kills 10..500
+  new_quest_checks: 15  # quests completed after you connect (0-30)
+  new_blueprint_checks: 10  # blueprints learned after you connect (0-20)
+  hideout_upgrade_checks: 6  # hideout levels gained after you connect (0-15)
+  project_phase_checks: 5  # project phases completed after you connect (0-15)
+  trap_percentage: 20  # % of filler that are traps
+  logic_difficulty: standard  # casual | standard | sweaty
+  referee_mode: warn  # off | warn
+  death_link: false
+  progression_balancing: 50

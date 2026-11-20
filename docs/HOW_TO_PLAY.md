@@ -29,9 +29,9 @@ The client reads your raids from arctracker.io's API. It never touches the game 
 4. You'll paste both into the client once. They're saved only on your PC (`Archipelago\arc_raiders_keys.json`).
 
 ## 3. Make your settings file (YAML)
-Copy **`ARC Raiders.yaml`**, set `name:` to your slot name, tweak the options (each is commented), and send it
+Easiest: use the online **YAML generator** (link on the guide site). Or copy **`ARC Raiders.yaml`**, set `name:` to your slot name, tweak the options (each is commented), and send it
 to whoever is hosting. Defaults are a good first run: Core Hunt goal (10 different ARC cores, one must be a
-Matriarch or Queen Reactor), about 105 checks, 25% of fillers are traps.
+Matriarch or Queen Reactor), about 105 checks, 20% of fillers are traps.
 
 ## 4. Hosting (one person)
 1. Put everyone's YAMLs in `Archipelago\Players\` and run **Generate** (the host needs `arc_raiders.apworld`
