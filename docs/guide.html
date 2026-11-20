@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARC Raiders Archipelago Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Single dark theme on purpose: it mirrors the in-game HUD (warm off-white on near-black, teal accent).
+     Layout: one reading column with a sticky section index on wide screens. */
+  :root {
+    color-scheme: dark;
+    --bg: #0d0f11;
+    --panel: #15181b;
+    --edge: #262a2f;
+    --text: #ece6da;
+    --dim: #98928a;
+    --teal: #4fb3c8;
+    --red: #ff6a4d;
+    --amber: #f0b44c;
+    --display: "Barlow Condensed", "Bahnschrift", "Arial Narrow", sans-serif;
+    --body: "Barlow", "Segoe UI", system-ui, sans-serif;
+    --r-grey: #c9c9c9; --r-green: #7fd36b; --r-blue: #5aa8ff; --r-purple: #c07cff; --r-gold: #ffc24a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body { font: 16px/1.6 var(--body); }
+  a { color: var(--teal); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 20px 64px; display: grid; gap: 40px;
+          grid-template-columns: 200px minmax(0, 1fr); }
+  nav { position: sticky; top: 24px; align-self: start; display: grid; gap: 6px; font: 600 15px var(--display);
+        letter-spacing: .08em; text-transform: uppercase; }
+  nav a { color: var(--dim); text-decoration: none; border-left: 2px solid var(--edge); padding: 2px 0 2px 10px; }
+  nav a:hover { color: var(--text); border-left-color: var(--teal); }
+  main { display: grid; gap: 48px; min-width: 0; }
+  header { display: grid; gap: 14px; }
+  .eyebrow { font: 600 14px var(--display); letter-spacing: .18em; text-transform: uppercase; color: var(--teal); }
+  h1 { font: 700 clamp(36px, 6vw, 56px)/1.02 var(--display); margin: 0; text-wrap: balance; letter-spacing: .01em; }
+  h2 { font: 700 30px/1.1 var(--display); margin: 0 0 14px; letter-spacing: .02em; text-transform: uppercase;
+       text-wrap: balance; }
+  h3 { font: 600 20px var(--display); margin: 22px 0 8px; letter-spacing: .04em; text-transform: uppercase; color: var(--dim); }
+  p, li { max-width: 68ch; }
+  .lede { font-size: 19px; color: var(--text); }
+  .lede b { color: var(--teal); font-weight: 600; }
+  section { scroll-margin-top: 20px; }
+  ol, ul { padding-left: 22px; display: grid; gap: 6px; margin: 0; }
+  code, kbd { font: 14px ui-monospace, Consolas, monospace; background: var(--panel); border: 1px solid var(--edge);
+              padding: 1px 6px; border-radius: 4px; }
+  .callout { border-left: 3px solid var(--teal); background: var(--panel); padding: 12px 16px; max-width: 72ch; }
+  .callout.warn { border-left-color: var(--amber); }
+  .table { overflow-x: auto; border: 1px solid var(--edge); border-radius: 6px; }
+  table { border-collapse: collapse; width: 100%; font-size: 15px; }
+  th, td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--edge); vertical-align: top; }
+  th { font: 600 14px var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--dim);
+       background: var(--panel); }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 600; white-space: nowrap; }
+  .steps { counter-reset: s; list-style: none; padding: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 40px; }
+  .steps li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px;
+                      display: grid; place-items: center; font: 700 15px var(--display); color: var(--bg);
+                      background: var(--teal); border-radius: 50%; }
+  .r { font-weight: 600; } .grey { color: var(--r-grey); } .green { color: var(--r-green); } .blue { color: var(--r-blue); }
+  .purple { color: var(--r-purple); } .gold { color: var(--r-gold); }
+  .red { color: var(--red); } .amber { color: var(--amber); } .teal { color: var(--teal); }
+
+  /* replica of the desktop HUD, so players know what they're looking at */
+  .hud-demo { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .hud { font-family: var(--display); background: rgba(12,14,16,.92); border: 1px solid var(--edge);
+         border-left: 3px solid var(--teal); padding: 10px 12px; position: relative; font-size: 15px; }
+  .hud .t { display: flex; justify-content: space-between; align-items: center; font-size: 12px; letter-spacing: .14em;
+            color: var(--dim); margin-bottom: 6px; }
+  .hud .t b { color: var(--teal); }
+  .hud .btn { border: 1px solid var(--edge); padding: 0 6px; color: var(--text); font-weight: 600; margin-left: 4px; }
+  .hud .grip { position: absolute; top: 4px; right: 4px; width: 18px; height: 18px;
+               background: radial-gradient(circle, #b4ada2 1.2px, transparent 1.6px) 0 0/4px 4px;
+               clip-path: polygon(0 0, 100% 0, 100% 100%); }
+  .hud .g { display: grid; grid-template-columns: auto 1fr auto 1fr; gap: 2px 10px; align-items: baseline; }
+  .hud .k { font-size: 11px; letter-spacing: .12em; color: var(--dim); text-transform: uppercase; }
+  .hud .v { font-weight: 600; white-space: nowrap; }
+  .hud .sep { height: 1px; background: var(--edge); margin: 8px 0 6px; }
+  .hud .trap { display: flex; justify-content: space-between; color: var(--red); font-weight: 600; }
+  .hud .done { font-size: 11px; border: 1px solid var(--edge); color: var(--text); padding: 0 8px; letter-spacing: .1em; }
+  .card { font-family: var(--display); background: rgba(12,14,16,.92); border: 1px solid var(--edge);
+          border-left: 3px solid var(--amber); padding: 6px 12px; margin-top: 6px; }
+  .card .h { font-size: 13px; color: var(--dim); } .card .h b { font-size: 11px; letter-spacing: .16em; margin-right: 6px; }
+  .card .b { font-weight: 600; font-size: 17px; }
+  .card.trapc { border-left-color: var(--red); } .card.found { border-left-color: var(--teal); }
+  @media (max-width: 860px) {
+    .wrap { grid-template-columns: 1fr; }
+    nav { position: static; grid-auto-flow: column; overflow-x: auto; }
+    .hud-demo { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+  html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav aria-label="Sections">
+    <a href="#install">Install</a>
+    <a href="#keys">Keys</a>
+    <a href="#yaml">Your YAML</a>
+    <a href="#host">Hosting</a>
+    <a href="#play">Playing</a>
+    <a href="#hud">The HUD</a>
+    <a href="#rules">The rules</a>
+    <a href="#traps">Traps &amp; tokens</a>
+    <a href="#checks">Checks &amp; goals</a>
+    <a href="#help">Troubleshooting</a>
+  </nav>
+
+  <main>
+    <header>
+      <div class="eyebrow">Archipelago world · v0.4.0</div>
+      <h1>ARC Raiders × Archipelago</h1>
+      <p class="lede"><b>Checks come from real raids</b>: extract, kill ARC, loot cores, finish quests. They're detected
+        automatically through arctracker.io. <b>Items you receive set what you may bring topside</b>, from grey pistols
+        and two bandages up to gold guns and heavy shields.</p>
+      <div class="callout">Works on your existing account: only progress after you first connect counts. Nothing touches
+        the game itself. The client only reads your synced raids from arctracker.io.</div>
+    </header>
+
+    <section id="install">
+      <h2>1 · Install</h2>
+      <p>You need ARC Raiders (Steam or Epic) linked to a free <a href="https://arctracker.io">arctracker.io</a> account
+        through the <i>ARC Tracker Link</i> app, plus <a href="https://archipelago.gg/tutorial/Archipelago/setup/en">Archipelago
+        0.6.4 or newer</a> (tested on 0.6.7) on Windows.</p>
+      <ol class="steps">
+        <li>Unzip the release and double-click <code>arc_raiders.apworld</code>. The Archipelago Launcher installs it.
+          (Or copy it into <code>Archipelago\custom_worlds\</code>.)</li>
+        <li>Restart the Launcher. <b>ARC Raiders Client</b> and <b>ARC Raiders HUD</b> now appear in its list.</li>
+      </ol>
+    </section>
+
+    <section id="keys">
+      <h2>2 · Your arctracker.io keys</h2>
+      <p>One-time setup, about three minutes. Both keys stay on your PC.</p>
+      <ol class="steps">
+        <li>On arctracker.io: <b>Settings → Developer Access → create a key</b> with the read scopes (profile, rounds,
+          stash, loadout, quests, blueprints, hideout, projects). It starts with <code>arc_u1_</code>. This is your <b>user key</b>.</li>
+        <li><b>Developer Dashboard → register an app</b> (any name). Its <b>app key</b> starts with <code>arc_k1_</code>.
+          Make your own app key rather than sharing one: each app key has a 500 calls/hour limit.</li>
+        <li>You'll paste both into the client the first time you connect.</li>
+      </ol>
+    </section>
+
+    <section id="yaml">
+      <h2>3 · Your settings (YAML)</h2>
+      <p>Copy <code>ARC Raiders.yaml</code> from the release, set <code>name:</code> to your slot name, adjust the
+        commented options, and send it to the host. The defaults make a good first run: the <b>Core Hunt</b> goal
+        (loot 10 different ARC cores, one a Matriarch or Queen Reactor), about 105 checks, and 25% of fillers as traps.</p>
+    </section>
+
+    <section id="host">
+      <h2>4 · Hosting (one person)</h2>
+      <ol class="steps">
+        <li>Put everyone's YAMLs in <code>Archipelago\Players\</code> and run <b>Generate</b>. The host needs this apworld
+          installed, plus apworlds for any other custom games in the multiworld.</li>
+        <li>Upload the <code>.zip</code> from <code>Archipelago\output\</code> at
+          <a href="https://archipelago.gg/uploads">archipelago.gg/uploads</a>, or host it locally.</li>
+        <li>Only ARC Raiders players need the apworld on their own PCs.</li>
+      </ol>
+    </section>
+
+    <section id="play">
+      <h2>5 · Playing</h2>
+      <ol class="steps">
+        <li><b>Sync arctracker.io first</b> (their website's sync button), so your latest raids are already in.</li>
+        <li>Open <b>ARC Raiders Client</b>, enter the server address and your slot name, and connect.</li>
+        <li>First time only: in the <b>ARC Raiders</b> tab, click <b>Keys</b>, paste both keys, and click <b>Save keys</b>.</li>
+        <li>The client takes a <b>starting snapshot</b>. Nothing before this moment counts.</li>
+        <li>Click <b>Desktop HUD</b>, then raid as normal. <b>After raids, sync arctracker.io</b>
+          (subscribers sync automatically). The client checks every 2 minutes, or press <b>CHECK</b>.</li>
+      </ol>
+    </section>
+
+    <section id="hud">
+      <h2>The desktop HUD</h2>
+      <div class="hud-demo">
+        <div>
+          <div class="hud" aria-label="Example of the HUD panel">
+            <span class="grip" aria-hidden="true"></span>
+            <div class="t"><span><b>ARC·AP</b></span><span>2M AGO <span class="btn">CHECK</span><span class="btn">SYNC</span>&nbsp;&nbsp;&nbsp;</span></div>
+            <div class="g">
+              <span class="k">Guns</span><span class="v blue">≤ Blue</span><span class="k">Tier</span><span class="v">≤ II</span>
+              <span class="k">Shield</span><span class="v">Light</span><span class="k">Heals</span><span class="v">4 <span class="green">≤ green</span></span>
+              <span class="k">Nades</span><span class="v">2</span><span class="k">Aug</span><span class="v">Basic</span>
+              <span class="k">Slots</span><span class="v">1 gun</span><span class="k">Lic</span><span class="v">BR · SMG · HC</span>
+            </div>
+            <div class="sep"></div>
+            <div class="trap"><span>▲ Pistol Only</span><span class="done">DONE</span></div>
+            <div class="sep"></div>
+            <div class="g"><span class="k">Cores</span><span class="v">4 / 10 <span class="amber">+ Rocketeer Driver</span></span></div>
+          </div>
+          <div class="card found"><div class="h"><b class="teal">CHECK</b>Check: Extraction #5</div><div class="b gold">Progressive Shields for Sam</div></div>
+          <div class="card"><div class="h"><b class="amber">RECEIVED</b>Sam sent you</div><div class="b">Map unlocked: Stella Montis</div></div>
+          <div class="card trapc"><div class="h"><b class="red">TRAP</b>Sam sent you</div><div class="b red">Trap: No Heals</div></div>
+        </div>
+        <ul>
+          <li>A transparent panel on top of the game. The game must be in <b>borderless windowed</b> mode.</li>
+          <li><b>Pop-up cards</b> for every check you hit (teal), every item someone sends you (amber), and traps (red).
+            Up to 4 show at once; extras wait their turn.</li>
+          <li><b>Move it</b> by dragging the dotted triangle in its top-right corner. <b>Right-click</b> to change the view
+            (Full / Compact / Pop-ups only), scale, opacity or position, or to close it.</li>
+          <li><b>DONE</b> clears a trap, <b>CHECK</b> looks for new raids now, and <b>SYNC</b> opens arctracker.io (this tabs you out).</li>
+          <li>It never takes focus, so clicks and new cards won't release your mouse from the game.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="rules">
+      <h2>The rules: what you may bring</h2>
+      <p>You start under-geared; items raise these tiers. A gun is allowed only if its <b>rarity, tier and class</b>
+        are all unlocked. The referee in the client flags your last synced loadout if it breaks a rule.</p>
+      <div class="table"><table>
+        <thead><tr><th>Item</th><th>Start → max</th></tr></thead>
+        <tbody>
+          <tr><td>Weapon Rarity</td><td><span class="r grey">Grey</span> → <span class="r green">Green</span> → <span class="r blue">Blue</span> → <span class="r purple">Purple</span> → <span class="r gold">Gold</span></td></tr>
+          <tr><td>Weapon Tier</td><td>I only → up to II → up to III → up to IV (gold/legendary guns count as IV)</td></tr>
+          <tr><td>Shields</td><td>None → Light → Medium → Heavy</td></tr>
+          <tr><td>Healing</td><td>2 grey heals → 4 (≤ green) → 6 (≤ blue) → 10 (any) → unlimited</td></tr>
+          <tr><td>Throwables</td><td>None → 2 → 5 → unlimited (grenades and mines)</td></tr>
+          <tr><td>Augment</td><td>Free/basic → ≤ green → ≤ blue → any</td></tr>
+          <tr><td>Weapon Slots</td><td>1 gun → 2 guns</td></tr>
+          <tr><td>Weapon License</td><td>Only licensed classes (AR, BR, SMG, Shotgun, Pistol, Hand Cannon, Sniper, LMG, Special). You start with 2.</td></tr>
+          <tr><td>Map Access</td><td>Only unlocked maps. You start with 1 of 7.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="traps">
+      <h2>Traps &amp; tokens</h2>
+      <h3>Traps apply to your next raid; press DONE afterwards</h3>
+      <div class="table"><table>
+        <thead><tr><th>Trap</th><th>Next raid…</th></tr></thead>
+        <tbody>
+          <tr><td class="red">Free Loadout Only</td><td>use a free loadout</td></tr>
+          <tr><td class="red">Pistol Only</td><td>pistols only</td></tr>
+          <tr><td class="red">No Heals</td><td>bring no healing items</td></tr>
+          <tr><td class="red">Loud Raid</td><td>make noise: fire a flare or play the guitar</td></tr>
+          <tr><td class="red">Drop Your Best Item</td><td>leave your most valuable item topside</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Tokens: spend in the client before a raid</h3>
+      <div class="table"><table>
+        <thead><tr><th>Token</th><th>One raid with…</th></tr></thead>
+        <tbody>
+          <tr><td>+1 Heal</td><td>one heal over your limit</td></tr>
+          <tr><td>Shield Bump</td><td>a shield one tier higher</td></tr>
+          <tr><td>Rarity Bump</td><td>one gun one rarity higher</td></tr>
+          <tr><td>Free Throwable</td><td>one extra grenade or mine</td></tr>
+          <tr><td>Insurance</td><td>skipping one trap (spend it, then DONE the trap)</td></tr>
+        </tbody>
+      </table></div>
+      <p>Mis-clicked? <b>Undo</b> in the client (or <code>/arc_undo</code>) reverses your last Spend or Done.</p>
+    </section>
+
+    <section id="checks">
+      <h2>Checks &amp; goals</h2>
+      <ul>
+        <li><b>Extraction #N</b> on any map, and <b>&lt;Map&gt; Extraction #N</b> (needs that map unlocked)</li>
+        <li><b>Extract a Raid Worth</b> 10k / 25k / 50k / 100k / 150k / 200k+</li>
+        <li><b>Total Extracted Milestone #N</b>: one for every 50k of value you extract</li>
+        <li><b>ARC Kills</b>: 10 / 25 / 50 / 100 / 200 / 350 / 500</li>
+        <li><b>Loot a &lt;Core&gt; #1 / #2</b>: 19 ARC cores, from Tick Pods and Wasp Drivers through Rocketeer Drivers
+          and Bastion Cells to the Matriarch and Queen Reactors. A core counts when it shows up in your stash or backpack.</li>
+        <li><b>New Quest Completed, New Blueprint Learned, Hideout Upgrade, Project Phase Completed #N</b></li>
+      </ul>
+      <p>Goals: <b>core_hunt</b> (loot N different cores, optionally including a boss reactor),
+        <b>extracted_value</b> (default 500k) or <b>both</b>. Harder checks expect more kit; boss cores expect blue guns,
+        tier III, Medium shields and 6 heals.</p>
+      <p>Client commands: <code>/arc_status</code> <code>/arc_poll</code> <code>/arc_spend</code> <code>/arc_done</code>
+        <code>/arc_undo</code> <code>/arc_hud</code> <code>/arc_overlay</code> <code>/arc_voice on|off</code></p>
+    </section>
+
+    <section id="help">
+      <h2>Troubleshooting</h2>
+      <div class="table"><table>
+        <thead><tr><th>You see</th><th>Do this</th></tr></thead>
+        <tbody>
+          <tr><td>Red “Sync needed”</td><td>Your last arctracker sync is older than your snapshot. Sync on the website.
+            If a sync carries old raids, their cores are skipped and the client tells you why.</td></tr>
+          <tr><td>Nothing after a raid</td><td>The raid isn't on arctracker yet. Sync on the website, then press CHECK.</td></tr>
+          <tr><td>HUD not visible in game</td><td>Switch the game to borderless windowed. Exclusive fullscreen draws over it.</td></tr>
+          <tr><td>Keys error (401/403)</td><td>Re-create the user key with all read scopes and check the app key.</td></tr>
+          <tr><td>API calls running low</td><td>The client slows down by itself. Use your own app key, not a shared one.</td></tr>
+          <tr><td>Port 38300 in use</td><td>Change <code>overlay_port</code> in <code>Archipelago\arc_raiders_client.json</code>.</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </main>
+</div>
+</body>
+</html>
