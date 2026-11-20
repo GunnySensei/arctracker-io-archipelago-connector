@@ -305,6 +305,11 @@ $("form").addEventListener("submit", e => e.preventDefault());
 $("download").addEventListener("click", () => {
   const {v, b, text} = render();
   if (b.total < b.required) return;
+  if (!v.name) {                       // a nameless YAML would connect as "YourName"
+    $("name").focus();
+    const msg = $("msg"); msg.className = "msg bad"; msg.textContent = "Enter your slot name first: it's the name you'll connect with.";
+    return;
+  }
   const blob = new Blob([text], {type: "text/yaml"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);

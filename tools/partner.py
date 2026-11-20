@@ -1,9 +1,9 @@
-"""Drive the scripted 'TestPartner' slot on the local test server, so GunnyArc receives items on cue.
+"""Drive the scripted 'TestPartner' slot on the local test server, so the other (human) slot receives items on cue.
 Usage (venv python):
-  partner.py send [N]   check N partner locations that hold GunnyArc items (default 1)
-  partner.py trap       check one partner location holding a GunnyArc trap
-  partner.py prog       check one partner location holding a GunnyArc progression item
-  partner.py status     how many of GunnyArc's items the partner still holds"""
+  partner.py send [N]   check N partner locations that hold the player's items (default 1)
+  partner.py trap       check one partner location holding a trap for the player
+  partner.py prog       check one partner location holding a progression item for the player
+  partner.py status     how many of the player's items the partner still holds"""
 import asyncio
 import json
 import random
@@ -12,7 +12,7 @@ import sys
 import websockets
 
 URL = "ws://127.0.0.1:38999"
-SLOT, TARGET = "TestPartner", "GunnyArc"
+SLOT = "TestPartner"
 
 
 async def main(cmd: str, n: int) -> None:
@@ -29,7 +29,8 @@ async def main(cmd: str, n: int) -> None:
                     connected = msg
                 elif msg["cmd"] == "ConnectionRefused":
                     sys.exit(f"refused: {msg}")
-        target = next(int(k) for k, v in connected["slot_info"].items() if v["name"] == TARGET)
+        # send to the first other slot (the human player), whatever it's called
+        target, target_name = next((int(k), v["name"]) for k, v in connected["slot_info"].items() if v["name"] != SLOT)
         missing = connected["missing_locations"]
         await ws.send(json.dumps([{"cmd": "LocationScouts", "locations": missing, "create_as_hint": 0}]))
         scouted = None
@@ -39,7 +40,7 @@ async def main(cmd: str, n: int) -> None:
                     scouted = msg["locations"]
         for_target = [l for l in scouted if l["player"] == target]
         if cmd == "status":
-            print(f"partner holds {len(for_target)} items for {TARGET} "
+            print(f"partner holds {len(for_target)} items for {target_name} "
                   f"({sum(1 for l in for_target if l['flags'] & 4)} traps, "
                   f"{sum(1 for l in for_target if l['flags'] & 1)} progression)")
             return
@@ -51,7 +52,7 @@ async def main(cmd: str, n: int) -> None:
             return
         await ws.send(json.dumps([{"cmd": "LocationChecks", "locations": [l["location"] for l in pick]}]))
         await asyncio.sleep(1)
-        print(f"sent {len(pick)} item(s) to {TARGET}")
+        print(f"sent {len(pick)} item(s) to {target_name}")
 
 
 if __name__ == "__main__":
